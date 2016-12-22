@@ -3,7 +3,7 @@ const rapid = new RapidAPI('EmotionSpotify', 'acb14e1a-731a-4c2c-89d9-777c4d9523
 
 rapid.call('MicrosoftEmotionAPI', 'getEmotionRecognition', {
   // Your Microsfot EmotionAPI substription key (See Docs: https://rapidapi.com/package/MicrosoftEmotionAPI/docs)
-	'subscriptionKey': '4e23f3364b974e38bbb3c53c063f63cf',
+	'subscriptionKey': '########################',
   // This is the URL of the facial image to be interpeated
 	'image': 'https://wallpaperscraft.com/image/beyonce_smile_face_lips_hair_5905_1280x1024.jpg'
 
