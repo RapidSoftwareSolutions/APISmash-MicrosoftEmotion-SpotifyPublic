@@ -1,15 +1,16 @@
 const RapidAPI = new require('rapidapi-connect');
 const rapid = new RapidAPI('EmotionSpotify', 'acb14e1a-731a-4c2c-89d9-777c4d9523cc');
+let open = require('open');
 
 let imageUrl = process.argv[2];
 
 rapid.call('MicrosoftEmotionAPI', 'getEmotionRecognition', {
   // Your Microsfot EmotionAPI substription key (See Docs: https://rapidapi.com/package/MicrosoftEmotionAPI/docs)
-	'subscriptionKey': '########################',
+	'subscriptionKey': '################################',
   // This is the URL of the facial image to be interpeated
 	'image': imageUrl
 
-}).on('success', (payload)=>{
+}).on('success', (payload) => {
   // The MicrosoftEmotionAPI returns a confidence score for happiness, sadness, surprise, anger, fear, contempt, disgust or neutral.
   // The emotion detected should be interpreted as the emotion with the highest score, as scores are normalized to sum to one.
   // I built a simple loop to find the emotion detected.
@@ -31,12 +32,13 @@ rapid.call('MicrosoftEmotionAPI', 'getEmotionRecognition', {
 	'limit': '1',
 	'offset': ''
 
-  }).on('success', (payload)=>{
-     // A JSON object is returned containing information about the playlist including the name, URL, and owner
-	   console.log(payload.playlists.items);
-  }).on('error', (payload)=>{
+  }).on('success', (payload) => {
+     // A JSON object is returned containing information about the playlist including the name, URL, and owner.
+     // Here I have grabbed the playlist's URL and opened it in the browser using the npm package "open"
+	   open(payload.playlists.items[0].external_urls.spotify);
+  }).on('error', (payload) => {
 	   console.log("Spotify Playlist Query Error");
   });
-}).on('error', (payload)=>{
+}).on('error', (payload) => {
   console.log("Microsoft Emotion Error");
 });
