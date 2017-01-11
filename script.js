@@ -6,7 +6,7 @@ let imageUrl = process.argv[2];
 
 rapid.call('MicrosoftEmotionAPI', 'getEmotionRecognition', {
   // Your Microsfot EmotionAPI substription key (See Docs: https://rapidapi.com/package/MicrosoftEmotionAPI/docs)
-	'subscriptionKey': '################################',
+	'subscriptionKey': '4e23f3364b974e38bbb3c53c063f63cf',
   // This is the URL of the facial image to be interpeated
 	'image': imageUrl
 
